@@ -10,6 +10,20 @@
             padding:0;
         }
 
+        .yellow.box{
+            background-color: yellow;
+            position:relative;
+            height: 100px;
+            width: 100%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content:flex-end;
+            align-items: center;
+            border-style:solid;
+
+        }
+
         .blue.box{
             position: relative;
             background-color: rgb(70, 187, 226);
@@ -39,7 +53,7 @@
 
         .pink.box{
             position: fixed;
-            top:0;
+            bottom:0;
             right:0;
             width: 50px;
             height: 50px;
@@ -47,29 +61,28 @@
             border-style:solid;
         }
 
-        .yellow.box{
-            background-color: yellow;
-            height: 100px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            border-style:solid;
-            margin-top:50px
-        }
+
 
         .green.box{
             background-color: green;
             width: 30px;
             height: 30px;
             border-style:solid;
+            margin-right:30px;
         }
     </style>
 </head>
 <body>
+    <div class ="yellow box">
+        <div class="green box"></div>
+        <div class="green box"></div>
+        <div class="green box"></div>
+    </div>
+
+
     <div class="blue box">
         <div class="textbox">Willkommen!</div>
-        <div class="textbox">Eins</div>
+        <div class="textbox point">Eins</div>
         <div class="textbox point">Zwei</div>
         <div class="textbox point">Drei</div>
         <div class="brown box"></div>
@@ -77,11 +90,6 @@
 
     <div class="pink box"></div>
 
-    <div class ="yellow box">
-        <div class="green box"></div>
-        <div class="green box"></div>
-        <div class="green box"></div>
-        <div class="green box"></div>
-    </div>
+
 </body>
 </html>
