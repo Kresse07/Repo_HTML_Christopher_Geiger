@@ -1,0 +1,15 @@
+/* reset.css */
+html { line-height: 1.15; scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Inter', sans-serif; font-weight: 400; font-style: normal; color: #000; background: #fff; }
+*, *::before, *::after { box-sizing: border-box; border-width: 0; border-style: solid; -webkit-font-smoothing: antialiased; }
+p, li, ul, pre, div, h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption { margin:0; padding:0; }
+button { background-color: transparent; font-family: inherit; font-size: 100%; line-height: 1.15; }
+a { color: inherit; text-decoration: inherit; }
+img { display: block; }
+input { padding: 2px 4px; }
+pre { white-space: normal; }
+details { display: block; margin: 0; padding: 0; }
+summary::-webkit-details-marker { display: none; }
+[data-thq="accordion"] [data-thq="accordion-content"] { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; padding: 0; }
+[data-thq="accordion"] details[data-thq="accordion-trigger"][open] + [data-thq="accordion-content"] { max-height: 1000vh; }
+details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] { transform: rotate(180deg); }
