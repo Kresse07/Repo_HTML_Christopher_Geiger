@@ -6,7 +6,6 @@ const API_URL = 'https://68f726b9f7fb897c6614ada1.mockapi.io/people';
 
 // JobCard Komponente
 // Zeigt eine einzelne Karte an (Avatar und Jobtitel)
-
 const JobCard = ({ name, title, avatarUrl }) => {
   return (
     <div className="job-card">
