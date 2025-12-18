@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function createTable(result){
+            let meineTabelle = "<table border=1>";
+            document.getElementById("id1").innerHTML += "<table>"
+            for(i=0; i<result.length; i++)
+            {
+                console.log(result[i].name);
+                meineTabelle += "<tr><td>" + result[i].name +"</td><td><img src='" + result[i].avatar +"' width='100'></td></tr>";
+            }
+            document.getElementById("id1").innerHTML = meineTabelle+"</table>";
+
+        }
+        function getData(){
+        const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+        };
+
+        fetch("https://68f726b9f7fb897c6614ada1.mockapi.io/austria", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {createTable(result);}
+        )
+        .catch((error) => console.error(error));
+        }
+
+    </script>
+</head>
+<body onload="getData()">
+    <div id="id1"></div>
+</body>
+</html>

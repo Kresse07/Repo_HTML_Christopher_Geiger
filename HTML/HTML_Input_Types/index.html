@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Example</title>
+</head>
+
+<body>
+
+  <form>
+
+    <fieldset>
+      <legend>Text Inputs</legend>
+
+      <label>Text:
+        <input type="text" name="username" placeholder="Enter text">
+      </label>
+
+      <label>Password:
+        <input type="password" name="password" placeholder="Enter password">
+      </label>
+
+      <label>Email:
+        <input type="email" name="email" placeholder="Enter email">
+      </label>
+
+      <label>Number:
+        <input type="number" name="age" min="1" max="120">
+      </label>
+
+      <label>Tel:
+        <input type="tel" name="phone" placeholder="+1234567890">
+      </label>
+
+      <label>URL:
+        <input type="url" name="website" placeholder="https://example.com">
+      </label>
+
+      <label>Search:
+        <input type="search" name="query" placeholder="Search...">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Choice Inputs</legend>
+
+      <label>
+        <input type="checkbox" name="subscribe" value="yes"> Subscribe to newsletter
+      </label>
+
+      <label>
+        <input type="radio" name="gender" value="male"> Male
+      </label>
+      <label>
+        <input type="radio" name="gender" value="female"> Female
+      </label>
+
+      <label>Color:
+        <input type="color" name="favcolor">
+      </label>
+
+      <label>Range:
+        <input type="range" name="volume" min="0" max="100">
+      </label>
+
+      <label>File:
+        <input type="file" name="fileUpload">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Date & Time</legend>
+
+      <label>Date:
+        <input type="date" name="date">
+      </label>
+
+      <label>Time:
+        <input type="time" name="time">
+      </label>
+
+      <label>Datetime Local:
+        <input type="datetime-local" name="datetime">
+      </label>
+
+      <label>Month:
+        <input type="month" name="month">
+      </label>
+
+      <label>Week:
+        <input type="week" name="week">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Text Areas and Dropdowns</legend>
+
+      <label>Textarea:
+        <textarea name="message" rows="4" placeholder="Type your message..."></textarea>
+      </label>
+
+      <label>Select:
+        <select name="country">
+          <option value="">-- Select Country --</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="ca">Canada</option>
+        </select>
+      </label>
+
+      <label>Datalist:
+        <input list="browsers" name="browser">
+        <datalist id="browsers">
+          <option value="Chrome">
+          <option value="Firefox">
+          <option value="Safari">
+          <option value="Edge">
+        </datalist>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Other Form Elements</legend>
+
+      <label>Progress:
+        <progress value="70" max="100"></progress>
+      </label>
+
+      <label>Meter:
+        <meter value="0.6">60%</meter>
+      </label>
+
+      <label>Output (calculated):
+        <output name="result">42</output>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Buttons</legend>
+
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+      <button type="button" onclick="alert('Button clicked!')">Click Me</button>
+    </fieldset>
+
+  </form>
+
+  <script>
+    // Hier kannst du später dein JavaScript einfügen
+    console.log("Form loaded!");
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: red;
+            padding: 10px;
+        }
+        .container{
+            display:grid;
+            grid-template-columns: 100%;
+            grid-auto-rows: minmax(100px, auto);
+            column-gap: 1px;
+            row-gap: 1px;
+        }
+
+        @media (min-width: 600px) {
+             .container{
+            display:grid;
+            grid-template-columns: 33% 33% 33%;
+            grid-auto-rows: minmax(100px, auto);
+            column-gap: 1px;
+            row-gap: 1px;
+            }
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box item1"box>eins</div>
+        <div class="box item2">zwei</div>
+        <div class="box item3">drei</div>
+        <div class="box item4">vier</div>
+        <div class="box item5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum sint veritatis amet corporis. Omnis iusto repellat magnam excepturi quibusdam quae consectetur expedita blanditiis, sapiente veniam.</div>
+    </div>
+</body>
+</html>
