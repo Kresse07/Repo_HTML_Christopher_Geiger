@@ -1,0 +1,71 @@
+/* Genereller Container und Layout */
+.job-board {
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f6;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Wichtig: Lässt die Karten in die nächste Zeile umbrechen */
+  gap: 25px; /* Abstand zwischen den Karten */
+  justify-content: center; /* Karten zentrieren */
+  margin-top: 30px;
+}
+
+/* Stil für eine einzelne Karte */
+.job-card {
+  width: 300px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: white;
+}
+
+
+.card-image-container {
+  width: 100%;
+  height: 250px; /* Feste Höhe für den Avatar-Bereich */
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Stellt sicher, dass das Bild den Container ausfüllt */
+}
+
+.card-content {
+  padding: 20px;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.25em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #1e3a8a; /* Dunkelblaue Farbe für den Jobtitel */
+  min-height: 50px; /* Sorgt für gleichmäßige Kartenhöhen */
+}
+
+.card-name {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+
+.loading, .error {
+    padding: 20px;
+    font-size: 1.2em;
+    color: #ef4444; /* Rote Farbe für Fehler */
+    border: 1px solid #fecaca;
+    background-color: #fef2f2;
+    margin: 20px auto;
+    width: fit-content;
+    border-radius: 8px;
+}
