@@ -1,9 +1,11 @@
+// src/pages/TablePage.jsx
 import React, { useEffect, useState } from 'react';
+import TeamRow from '../components/TeamRow'; // Import der ausgelagerten Zeilen-Komponente
 
 const TablePage = ({ onTeamClick, onBackClick }) => {
   const [teams, setTeams] = useState([]);
-  const fallbackLogo = "/Huddersfield.png";
 
+  // Daten laden beim ersten Rendern der Komponente (Mounting)
   useEffect(() => {
     async function loadData() {
       try {
@@ -17,35 +19,10 @@ const TablePage = ({ onTeamClick, onBackClick }) => {
     loadData();
   }, []);
 
-  const renderTeamRow = (team, index) => {
-    const isHuddersfield = team.teamName && team.teamName.includes("Huddersfield");
-    const logoSrc = isHuddersfield ? fallbackLogo : (team.teamIconUrl || fallbackLogo);
-
-    return (
-      <div 
-        key={team.teamName}
-        className="flex items-center justify-between bg-white p-[10px_14px] rounded-[24px] cursor-pointer"
-        onClick={() => onTeamClick(team.teamName)}
-      >
-        <div className="flex items-center gap-[14px]">
-          <span className="w-6 font-bold">{index + 1}</span>
-          <img 
-            src={logoSrc} 
-            alt="Logo" 
-            className="w-8 h-8 object-contain"
-            onError={(e) => { e.target.src = fallbackLogo; }}
-          />
-          <span className="font-medium">{team.teamName}</span>
-        </div>
-        <span className="font-bold text-[#880c9e]">{team.points ?? "0"}</span>
-      </div>
-    );
-  };
-
   return (
     <div className="flex flex-col items-start p-[20px] bg-white min-h-screen w-full font-['Inter']">
       
-      {/* Header Bereich - Höhe und Margin reduziert */}
+      {/* Header Bereich */}
       <div className="relative w-full flex items-center justify-center h-[120px] mb-[10px]">
         
         {/* Zurück-Button */}
@@ -63,20 +40,37 @@ const TablePage = ({ onTeamClick, onBackClick }) => {
           </div>
         </div>
 
+        {/* Titel */}
         <div className="absolute top-[25px] flex justify-center w-full pointer-events-none">
           <h1 className="text-[36px] font-bold">Premier League Table</h1>
         </div>
       </div>
 
-      {/* Tabellen Container - Abstand von mt-[100px] auf mt-[10px] geändert */}
+      {/* Tabellen Container */}
       <div className="flex flex-wrap gap-[40px] justify-start w-full mt-[10px]">
         
+        {/* Linke Spalte (Platz 1-10) */}
         <div className="bg-[#e0e0e0] p-[25px] rounded-[32px] flex flex-col gap-[12px] min-w-[400px]">
-          {teams.slice(0, 10).map((team, i) => renderTeamRow(team, i))}
+          {teams.slice(0, 10).map((team, i) => (
+            <TeamRow 
+              key={team.teamName}    // Eindeutiger Schlüssel für React-Rendering
+              team={team}            // Übergabe des Team-Datenobjekts
+              index={i}              // Laufender Index (0-9) für die Platzierung
+              onClick={onTeamClick}  // Callback-Funktion für Klick-Events
+            />
+          ))}
         </div>
 
+        {/* Rechte Spalte (Platz 11-20) */}
         <div className="bg-[#e0e0e0] p-[25px] rounded-[32px] flex flex-col gap-[12px] min-w-[400px]">
-          {teams.slice(10, 20).map((team, i) => renderTeamRow(team, i + 10))}
+          {teams.slice(10, 20).map((team, i) => (
+            <TeamRow 
+              key={team.teamName} 
+              team={team} 
+              index={i + 10}         // Offset von +10, damit die Platzierung bei 11 beginnt
+              onClick={onTeamClick} 
+            />
+          ))}
         </div>
 
       </div>

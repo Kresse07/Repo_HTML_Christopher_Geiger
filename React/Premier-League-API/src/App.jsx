@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import StartPage from './StartPage';
-import TablePage from './TablePage';
-import MatchDetail from './MatchDetail';
+import StartPage from './pages/StartPage';
+import TablePage from './pages/TablePage';
+import MatchDetail from './pages/MatchDetail';
 
 function App() {
   const [view, setView] = useState('start'); // 'start', 'table', 'detail'
