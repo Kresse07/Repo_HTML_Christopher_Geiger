@@ -1,29 +1,24 @@
-// src/components/TeamRow.jsx
 import React from 'react';
+import { getTeamLogo } from '../utils/imageHelper'; // <--- Importieren
 
-// Hier kommen die Props in den geschweiften Klammern rein
 const TeamRow = ({ team, index, onClick }) => {
   
-  // 1. Die Logik für das Bild
-  const fallbackLogo = "/Huddersfield.png";
-  const isHuddersfield = team.teamName && team.teamName.includes("Huddersfield");
-  const logoSrc = isHuddersfield ? fallbackLogo : (team.teamIconUrl || fallbackLogo);
+  // Logik jetzt über den Helper
+  const logoSrc = getTeamLogo(team.teamName, team.teamIconUrl);
 
-  // 2. Das HTML für EINE EINZIGE Zeile
   return (
     <div 
       className="flex items-center justify-between bg-white p-[10px_14px] rounded-[24px] cursor-pointer hover:bg-gray-50"
-      // Wenn geklickt wird Funktion aufrufen
       onClick={() => onClick(team.teamName)}
     >
       <div className="flex items-center gap-[14px]">
-        {/* Props: index und team */}
         <span className="w-6 font-bold">{index + 1}</span>
         <img 
           src={logoSrc} 
           alt={team.teamName} 
           className="w-8 h-8 object-contain"
-          onError={(e) => { e.target.src = fallbackLogo; }}
+          // Fallback, falls das Bild-Laden fehlschlägt (z.B. broken Link)
+          onError={(e) => { e.target.src = "/Huddersfield.png"; }}
         />
         <span className="font-medium">{team.teamName}</span>
       </div>
