@@ -1,0 +1,50 @@
+/* Zentriert die App auf der Seite */
+.app-container {
+  max-width: 800px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Formular und Suche */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Ein einzelner Datensatz als Zeile */
+.person-row {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  gap: 15px;
+}
+
+/* Das Profilbild */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Textbereich in der Zeile */
+.info {
+  flex-grow: 1;
+}
+
+.name { font-weight: bold; display: block; }
+.title { color: #666; font-size: 0.9em; }
+
+/* Knöpfe */
+.delete-btn { color: red; cursor: pointer; border: none; background: none; }
+.edit-btn { color: blue; cursor: pointer; border: none; background: none; margin-right: 10px; }
