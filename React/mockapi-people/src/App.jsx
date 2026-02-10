@@ -91,9 +91,8 @@ export default function PeopleApp() {
             <span className="name">{person.name}</span>
             <span className="title">{person.title}</span>
             {/* Ausgabe von City */}
-            <span className="city" style={{display: 'block', fontSize: '0.8em', color: '#888'}}>
-               📍 {person.city}
-            </span>
+            <span className="city">
+              📍{person.city}</span>
           </div>
           <div className="buttons">
             <button className="edit-btn" onClick={() => {setEditingId(person.id); setFormData(person)}}>Edit</button>
