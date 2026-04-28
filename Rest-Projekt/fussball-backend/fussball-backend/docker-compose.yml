@@ -1,0 +1,87 @@
+# =========================================================================
+#  DOCKER COMPOSE - Fussball-Verwaltungssystem
+#  Startet App + MySQL-DB mit einem einzigen Befehl:
+#      docker compose up --build -d
+# =========================================================================
+
+services:
+
+ # ----------------------------------------------------------------
+  #  MariaDB-Datenbank (MySQL Drop-in Replacement)
+  # ----------------------------------------------------------------
+  db:
+    image: mariadb:10.11
+    container_name: fussball_db
+    restart: unless-stopped
+    environment:
+      # MariaDB versteht die originalen MYSQL_ Variablen perfekt
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE:      ${DB_NAME}
+      MYSQL_USER:          ${DB_USER}
+      MYSQL_PASSWORD:      ${DB_PASSWORD}
+    ports:
+      - "${DB_EXTERNAL_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - fussball_net
+
+  # ----------------------------------------------------------------
+  #  Node.js-Backend (Express-API)
+  # ----------------------------------------------------------------
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fussball_app
+    platform: linux/amd64
+    restart: unless-stopped
+    depends_on:
+      db:
+        # App startet erst, wenn der DB-Healthcheck "healthy" meldet
+        condition: service_healthy
+    environment:
+      # Alle Werte werden aus der .env-Datei übernommen
+      NODE_ENV:    ${NODE_ENV}
+      APP_PORT:    ${APP_PORT}
+      DB_HOST:     db                 # Container-Name der DB im internen Netzwerk
+      DB_PORT:     3306                # Intern IMMER 3306 (nicht der externe Port!)
+      DB_NAME:     ${DB_NAME}
+      DB_USER:     ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET:  ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
+      UPLOAD_DIR:     ${UPLOAD_DIR}
+      MAX_UPLOAD_MB:  ${MAX_UPLOAD_MB}
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    volumes:
+      # Bilder werden auf dem Host persistiert (nicht im Container!)
+      # So überleben Uploads einen Container-Neustart oder -Rebuild
+      - uploads_data:/app/uploads
+    networks:
+      - fussball_net
+
+# -------------------------------------------------------------------
+#  Volumes - persistente Daten auch nach "docker compose down"
+# -------------------------------------------------------------------
+volumes:
+  mysql_data:
+    name: fussball_mysql_data
+  uploads_data:
+    name: fussball_uploads_data
+
+# -------------------------------------------------------------------
+#  Netzwerk - App und DB reden nur intern miteinander
+# -------------------------------------------------------------------
+networks:
+  fussball_net:
+    name: fussball_net
+    driver: bridge

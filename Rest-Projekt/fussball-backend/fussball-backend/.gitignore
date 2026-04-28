@@ -1,0 +1,43 @@
+# =========================================================================
+#  Was NICHT in Git committet werden soll.
+# =========================================================================
+
+# Node-Abhängigkeiten
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Secrets - IMMER ausgeschlossen! (H2)
+.env
+.env.local
+.env.*.local
+
+# Hochgeladene Bilder (zu groß für Repo, gehören in Docker-Volume)
+uploads/players/*
+uploads/teams/*
+uploads/leagues/*
+# Aber die Ordner selbst behalten (damit Struktur existiert):
+!uploads/players/.gitkeep
+!uploads/teams/.gitkeep
+!uploads/leagues/.gitkeep
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Build / Coverage
+dist/
+coverage/
+.nyc_output/

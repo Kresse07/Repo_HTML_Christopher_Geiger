@@ -1,0 +1,36 @@
+# =========================================================================
+#  Was NICHT ins Docker-Image kopiert werden soll.
+#  Spart Build-Zeit und verhindert, dass Secrets ins Image gelangen.
+# =========================================================================
+
+# Node-Abhängigkeiten (werden im Container neu installiert)
+node_modules
+npm-debug.log
+
+# Secrets NIEMALS ins Image!
+.env
+
+# Git-Dateien
+.git
+.gitignore
+
+# IDE-Dateien
+.vscode
+.idea
+*.swp
+*.swo
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Tests / Coverage
+coverage
+.nyc_output
+
+# Dokumentation (optional - wir behalten README)
+# *.md
